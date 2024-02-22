@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyjyabry6dj06"]
+
+[ext_resource type="PackedScene" uid="uid://bee4rrslqoo5h" path="res://top_bar.tscn" id="1_evlja"]
+[ext_resource type="PackedScene" uid="uid://cfin25o5boeqw" path="res://paddle.tscn" id="2_nupup"]
+
+[node name="Game" type="Node"]
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TopBar" parent="." instance=ExtResource("1_evlja")]
+size_flags_vertical = 0
+
+[node name="Paddle" parent="." instance=ExtResource("2_nupup")]
+position = Vector2(600, 950)
