@@ -3,7 +3,7 @@ using Godot;
 public partial class Ball : CharacterBody2D
 {
     [Export]
-    public float speed = 500f;
+    public float speed = 750f;
 	private Vector2 screenSize;
     public Vector2 velocity;
     private float height;
