@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlsnnfs8r4iyr"]
+
+[ext_resource type="Script" path="res://Ball.cs" id="1_6b3pu"]
+[ext_resource type="AudioStream" uid="uid://cacmi1ath52g4" path="res://bounce.wav" id="2_vc58p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhvwi"]
+size = Vector2(24, 24)
+
+[node name="Ball" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_6b3pu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rhvwi")
+
+[node name="Bounce" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vc58p")
+volume_db = -2.0
