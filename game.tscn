@@ -24,7 +24,7 @@ size_flags_vertical = 0
 position = Vector2(600, 950)
 
 [node name="Ball" parent="." instance=ExtResource("3_jikax")]
-position = Vector2(594, 398)
+position = Vector2(598, 908)
 
 [node name="Brick" parent="." instance=ExtResource("5_5g8xp")]
 position = Vector2(285, 299)
