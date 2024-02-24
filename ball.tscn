@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlsnnfs8r4iyr"]
+[gd_scene load_steps=5 format=3 uid="uid://dlsnnfs8r4iyr"]
 
 [ext_resource type="Script" path="res://Ball.cs" id="1_6b3pu"]
 [ext_resource type="AudioStream" uid="uid://cacmi1ath52g4" path="res://bounce.wav" id="2_vc58p"]
+[ext_resource type="AudioStream" uid="uid://v0p5l4lmp22s" path="res://break.wav" id="3_s7ff8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhvwi"]
 size = Vector2(24, 24)
@@ -30,3 +31,6 @@ shape = SubResource("RectangleShape2D_rhvwi")
 [node name="Bounce" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_vc58p")
 volume_db = -2.0
+
+[node name="Break" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_s7ff8")

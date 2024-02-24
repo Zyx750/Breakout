@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyjyabry6dj06"]
+[gd_scene load_steps=6 format=3 uid="uid://dyjyabry6dj06"]
 
 [ext_resource type="PackedScene" uid="uid://bee4rrslqoo5h" path="res://top_bar.tscn" id="1_evlja"]
 [ext_resource type="Script" path="res://Game.cs" id="1_wuhxr"]
 [ext_resource type="PackedScene" uid="uid://cfin25o5boeqw" path="res://paddle.tscn" id="2_nupup"]
 [ext_resource type="PackedScene" uid="uid://dlsnnfs8r4iyr" path="res://ball.tscn" id="3_jikax"]
+[ext_resource type="PackedScene" uid="uid://cabscy8bpkbhb" path="res://brick.tscn" id="5_5g8xp"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_wuhxr")
@@ -24,5 +25,20 @@ position = Vector2(600, 950)
 
 [node name="Ball" parent="." instance=ExtResource("3_jikax")]
 position = Vector2(594, 398)
+
+[node name="Brick" parent="." instance=ExtResource("5_5g8xp")]
+position = Vector2(285, 299)
+MaxHealth = 2
+
+[node name="Brick2" parent="." instance=ExtResource("5_5g8xp")]
+position = Vector2(385, 461)
+MaxHealth = 4
+
+[node name="Brick3" parent="." instance=ExtResource("5_5g8xp")]
+position = Vector2(688, 238)
+
+[node name="Brick4" parent="." instance=ExtResource("5_5g8xp")]
+position = Vector2(869, 449)
+MaxHealth = 3
 
 [connection signal="Offscreen" from="Ball" to="." method="OnBallLost"]

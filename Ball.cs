@@ -3,12 +3,13 @@ using Godot;
 public partial class Ball : CharacterBody2D
 {
     [Export]
-    public float speed = 750f;
-	private Vector2 screenSize;
+    public float speed = 1000f;
+    Vector2 screenSize;
     public Vector2 velocity;
-    private float height;
-    private int dir = 1;
-    private AudioStreamPlayer bounce;
+    float height;
+    int dir = 1;
+    AudioStreamPlayer bounceSfx;
+	AudioStreamPlayer breakSfx;
     [Signal]
     public delegate void OffscreenEventHandler();
 
@@ -17,7 +18,8 @@ public partial class Ball : CharacterBody2D
     {
 		screenSize = GetViewportRect().Size;
         height = (GetNode<CollisionShape2D>("CollisionShape2D").Shape as RectangleShape2D).Size.Y;
-        bounce = GetNode<AudioStreamPlayer>("Bounce");
+        bounceSfx = GetNode<AudioStreamPlayer>("Bounce");
+		breakSfx = GetNode<AudioStreamPlayer>("Break");
     }
 
     public override void _PhysicsProcess(double delta)
@@ -27,7 +29,7 @@ public partial class Ball : CharacterBody2D
         if(Position.Y < height/2+100) {
             velocity = velocity.Bounce(Vector2.Up);
             Position = new Vector2(Position.X, height/2+100);
-            bounce.Play();
+            bounceSfx.Play();
         }
         else if (Position.Y > screenSize.Y+height*2) {
             EmitSignal("Offscreen");
@@ -35,22 +37,24 @@ public partial class Ball : CharacterBody2D
         if(Position.X < height/2) {
             velocity = velocity.Bounce(Vector2.Right);
             Position = new Vector2(height/2, Position.Y);
-            bounce.Play();
+            bounceSfx.Play();
         }
         else if(Position.X > screenSize.X - height/2) {
             velocity = velocity.Bounce(Vector2.Left);
             Position = new Vector2(screenSize.X - height/2, Position.Y);
-            bounce.Play();
+            bounceSfx.Play();
         }
 
         if (colInfo != null) {
             if(colInfo.GetCollider() is Paddle p) {
                 Vector2 dir = new Vector2(Position.X - p.Position.X, -100).Normalized();
                 velocity = dir * speed;
-                bounce.Play();
+                bounceSfx.Play();
             }
-            else {
-
+            else if(colInfo.GetCollider() is Brick b) {
+                velocity = velocity.Bounce(colInfo.GetNormal());
+                if(b.Hit()) breakSfx.Play();
+                else bounceSfx.Play();
             }
         }
 
