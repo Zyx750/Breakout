@@ -5,6 +5,8 @@ public partial class Game : Node
 	Ball ball;
 	Paddle paddle;
 	bool launched = false;
+	[Export]
+	int lives = 3;
 	public override void _Ready()
 	{
 		ball = GetNode<Ball>("Ball");
@@ -24,7 +26,14 @@ public partial class Game : Node
     }
 
 	private void OnBallLost() {
-		GD.Print("Game over");
-		GetNode<Ball>("Ball").QueueFree();
+		lives--;
+		if(lives > 0) {
+			launched = false;
+			ball.velocity = new Vector2();
+		}
+		else {
+			GD.Print("Game over");
+			ball.QueueFree();
+		}
 	}
 }

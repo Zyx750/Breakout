@@ -31,7 +31,7 @@ public partial class Ball : CharacterBody2D
             Position = new Vector2(Position.X, height/2+100);
             bounceSfx.Play();
         }
-        else if (Position.Y > screenSize.Y+height*2) {
+        else if (Position.Y > screenSize.Y+height*5) {
             EmitSignal("Offscreen");
         }
         if(Position.X < height/2) {
