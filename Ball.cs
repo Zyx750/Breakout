@@ -47,8 +47,11 @@ public partial class Ball : CharacterBody2D
 
         if (colInfo != null) {
             if(colInfo.GetCollider() is Paddle p) {
-                Vector2 dir = new Vector2(Position.X - p.Position.X, -100).Normalized();
-                velocity = dir * speed;
+                if(colInfo.GetNormal() == Vector2.Up) {
+                    Vector2 dir = new Vector2(Position.X - p.Position.X, -100).Normalized();
+                    velocity = dir * speed;
+                }
+                else velocity = velocity.Bounce(colInfo.GetNormal());
                 bounceSfx.Play();
             }
             else if(colInfo.GetCollider() is Brick b) {
