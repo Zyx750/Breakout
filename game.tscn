@@ -21,24 +21,24 @@ color = Color(0, 0, 0, 1)
 size_flags_vertical = 0
 
 [node name="Paddle" parent="." instance=ExtResource("2_nupup")]
-position = Vector2(600, 950)
+position = Vector2(600, 851)
 
 [node name="Ball" parent="." instance=ExtResource("3_jikax")]
-position = Vector2(598, 908)
+position = Vector2(598, 809)
 
 [node name="Brick" parent="." instance=ExtResource("5_5g8xp")]
-position = Vector2(285, 299)
+position = Vector2(393, 215)
 MaxHealth = 2
 
 [node name="Brick2" parent="." instance=ExtResource("5_5g8xp")]
-position = Vector2(385, 461)
+position = Vector2(435, 305)
 MaxHealth = 4
 
 [node name="Brick3" parent="." instance=ExtResource("5_5g8xp")]
 position = Vector2(688, 238)
 
 [node name="Brick4" parent="." instance=ExtResource("5_5g8xp")]
-position = Vector2(869, 449)
+position = Vector2(794, 357)
 MaxHealth = 3
 
 [connection signal="Offscreen" from="Ball" to="." method="OnBallLost"]

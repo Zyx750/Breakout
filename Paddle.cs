@@ -2,7 +2,7 @@ using Godot;
 public partial class Paddle : CharacterBody2D
 {
 	[Export]
-	private float speed = 500.0f;
+	private float speed = 400.0f;
 	private Vector2 screenSize;
 	private float width;
 	public override void _Ready()
