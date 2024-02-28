@@ -1,6 +1,4 @@
-# Godot 4+ specific ignores
 .godot/
 .vscode/
 .gitattributes
-.gitignore
 Windows/

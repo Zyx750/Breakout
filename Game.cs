@@ -4,6 +4,7 @@ public partial class Game : Node
 {
 	Ball ball;
 	Paddle paddle;
+	TopBar topBar;
 	bool launched = false;
 	[Export]
 	int lives = 3;
@@ -11,6 +12,8 @@ public partial class Game : Node
 	{
 		ball = GetNode<Ball>("Ball");
 		paddle = GetNode<Paddle>("Paddle");
+		topBar = GetNode<TopBar>("TopBar");
+		topBar.updateLives(lives);
 	}
 
     public override void _Process(double delta)
@@ -26,10 +29,11 @@ public partial class Game : Node
     }
 
 	private void OnBallLost() {
-		lives--;
 		if(lives > 0) {
+			topBar.updateLives(lives);
 			launched = false;
 			ball.velocity = new Vector2();
+			lives--;
 		}
 		else {
 			GD.Print("Game over");

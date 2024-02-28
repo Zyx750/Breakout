@@ -3,20 +3,16 @@
     "tasks": [
         {
             "label": "build",
-            "command": "dotnet",
+            "command": "C:\\Godot\\Godot_v4.2.1-stable_mono_win64.exe",
             "type": "process",
             "args": [
-                "build"
+                "--build-solutions",
+                "--path",
+                "${workspaceRoot}",
+                "--no-window",
+                "-q"
             ],
-            "problemMatcher": "$msCompile",
-            "presentation": {
-                "echo": true,
-                "reveal": "silent",
-                "focus": false,
-                "panel": "shared",
-                "showReuseMessage": true,
-                "clear": false
-            }
+            "problemMatcher": "$msCompile"
         }
     ]
 }

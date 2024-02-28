@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bee4rrslqoo5h"]
+[gd_scene load_steps=5 format=3 uid="uid://bee4rrslqoo5h"]
 
 [ext_resource type="Theme" uid="uid://c78778cg6ra80" path="res://top_bar.tres" id="1_82sd8"]
+[ext_resource type="Script" path="res://TopBar.cs" id="1_byhpv"]
 [ext_resource type="Texture2D" uid="uid://btbji560drvvy" path="res://heart.png" id="2_jjeqj"]
+[ext_resource type="PackedScene" uid="uid://brr1vk3bht3gs" path="res://heart.tscn" id="3_wpw2i"]
 
 [node name="TopBar" type="Control"]
 layout_mode = 3
@@ -9,6 +11,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 100.0
 grow_horizontal = 2
+script = ExtResource("1_byhpv")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -52,17 +55,22 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Lives/MarginContainer"]
+[node name="Hearts" type="HBoxContainer" parent="HBoxContainer/Lives/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Heart" type="TextureRect" parent="HBoxContainer/Lives/MarginContainer/HBoxContainer"]
+[node name="Heart" parent="HBoxContainer/Lives/MarginContainer/Hearts" instance=ExtResource("3_wpw2i")]
+layout_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="HBoxContainer/Lives/MarginContainer/Hearts"]
+texture_repeat = 2
 layout_mode = 2
 texture = ExtResource("2_jjeqj")
 expand_mode = 2
 
-[node name="Heart2" type="TextureRect" parent="HBoxContainer/Lives/MarginContainer/HBoxContainer"]
+[node name="Heart3" type="TextureRect" parent="HBoxContainer/Lives/MarginContainer/Hearts"]
+texture_repeat = 2
 layout_mode = 2
 texture = ExtResource("2_jjeqj")
 expand_mode = 2

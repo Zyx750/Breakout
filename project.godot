@@ -50,3 +50,7 @@ launch={
 2d_physics/layer_1="Paddle"
 2d_physics/layer_2="Ball"
 2d_physics/layer_3="Bricks"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
