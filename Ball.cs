@@ -51,7 +51,10 @@ public partial class Ball : CharacterBody2D
                     Vector2 dir = new Vector2(Position.X - p.Position.X, -100).Normalized();
                     velocity = dir * speed;
                 }
-                else velocity = velocity.Bounce(colInfo.GetNormal());
+                else {
+                    velocity = velocity.Bounce(colInfo.GetNormal());
+                    Position = Position+colInfo.GetNormal()*5;
+                }
                 bounceSfx.Play();
             }
             else if(colInfo.GetCollider() is Brick b) {
