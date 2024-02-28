@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://bee4rrslqoo5h"]
+[gd_scene load_steps=3 format=3 uid="uid://bee4rrslqoo5h"]
+
+[ext_resource type="Theme" uid="uid://c78778cg6ra80" path="res://top_bar.tres" id="1_82sd8"]
+[ext_resource type="Texture2D" uid="uid://btbji560drvvy" path="res://heart.png" id="2_jjeqj"]
 
 [node name="TopBar" type="Control"]
 layout_mode = 3
@@ -26,13 +29,66 @@ offset_top = -5.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 100
-text = "Text"
+theme = ExtResource("1_82sd8")
+
+[node name="Lives" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Lives"]
+layout_mode = 2
+text = "Lives"
 horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Lives"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Lives/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Heart" type="TextureRect" parent="HBoxContainer/Lives/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_jjeqj")
+expand_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="HBoxContainer/Lives/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_jjeqj")
+expand_mode = 2
+
+[node name="Level" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Level"]
+layout_mode = 2
+text = "Level"
+horizontal_alignment = 1
+
+[node name="Number" type="Label" parent="HBoxContainer/Level"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="Score" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Current" type="Label" parent="HBoxContainer/Score"]
+layout_mode = 2
+text = "Current score: 0"
+
+[node name="Best" type="Label" parent="HBoxContainer/Score"]
+layout_mode = 2
+text = "Highscore: 0"

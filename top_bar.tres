@@ -1,0 +1,9 @@
+[gd_resource type="Theme" format=3 uid="uid://c78778cg6ra80"]
+
+[resource]
+HBoxContainer/constants/separation = 12
+Label/font_sizes/font_size = 30
+MarginContainer/constants/margin_bottom = 5
+MarginContainer/constants/margin_left = 5
+MarginContainer/constants/margin_right = 5
+MarginContainer/constants/margin_top = 5
