@@ -15,7 +15,7 @@ public partial class TopBar : Control
 		hearts = GetNode("HBoxContainer/Lives/MarginContainer/Hearts");
     }
     public void updateLives(int lives) {
-		if(lives == 0) return;
+		if(lives < 0) return;
 		if(lives > 6) lives = 6;
 		if(lives < hearts.GetChildCount()) {
 			hearts.GetChildren();
