@@ -36,8 +36,7 @@ public partial class Game : Node
 		if(lives > 0) {
 			lives--;
 			topBar.updateLives(lives);
-			launched = false;
-			ball.velocity = new Vector2();
+			ResetBall();
 		}
 		else {
 			GD.Print("Game over");
@@ -45,9 +44,15 @@ public partial class Game : Node
 		}
 	}
 
+	private void ResetBall() {
+		launched = false;
+		ball.velocity = new Vector2();
+	}
+
 	private void OnLevelWin() {
 		lives++;
 		topBar.updateLives(lives);
+		ResetBall();
 		LevelWinSfx.Play();
 	}
 
