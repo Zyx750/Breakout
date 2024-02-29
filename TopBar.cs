@@ -14,7 +14,7 @@ public partial class TopBar : Control
         highscore = GetNode<Label>("HBoxContainer/Score/Best");
 		hearts = GetNode("HBoxContainer/Lives/MarginContainer/Hearts");
     }
-    public void updateLives(int lives) {
+    public void updateLives(uint lives) {
 		if(lives < 0) return;
 		if(lives > 6) lives = 6;
 		if(lives < hearts.GetChildCount()) {
@@ -29,13 +29,13 @@ public partial class TopBar : Control
 			}
 		}
 	}
-	public void changeLevel(int level) {
+	public void changeLevel(uint level) {
 		this.level.Text = level.ToString();
 	}
-	public void updateScore(int score) {
+	public void updateScore(uint score) {
 		this.score.Text = "Current score: " + score.ToString();
 	}
-	public void updateHighscore(int score) {
+	public void updateHighscore(uint score) {
 		highscore.Text = "Highscore: " + score.ToString();
 	}
 }

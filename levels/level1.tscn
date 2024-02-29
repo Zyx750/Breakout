@@ -37,7 +37,7 @@ position = Vector2(480, 0)
 MaxHealth = 2
 
 [node name="Row2" type="Node2D" parent="."]
-position = Vector2(600, 250)
+position = Vector2(600, 300)
 
 [node name="Brick" parent="Row2" instance=ExtResource("1_abpgj")]
 position = Vector2(-420, 0)

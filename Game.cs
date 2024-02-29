@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using Godot;
 
 public partial class Game : Node
@@ -8,8 +9,9 @@ public partial class Game : Node
 	TopBar topBar;
 	bool launched = false;
 	[Export]
-	int lives = 2;
-	int score = 0;
+	uint lives = 2;
+	uint score = 0;
+	uint highscore = 0;
 	AudioStreamPlayer LevelWinSfx;
 	public override void _Ready()
 	{
@@ -18,6 +20,10 @@ public partial class Game : Node
 		topBar = GetNode<TopBar>("TopBar");
 		LevelWinSfx = GetNode<AudioStreamPlayer>("LevelWin");
 		topBar.updateLives(lives);
+
+		using var file = FileAccess.Open("highscore.dat", FileAccess.ModeFlags.Read);
+		highscore = file.Get32();
+		topBar.updateHighscore(highscore);
 	}
 
     public override void _Process(double delta)
@@ -39,8 +45,17 @@ public partial class Game : Node
 			ResetBall();
 		}
 		else {
-			GD.Print("Game over");
 			ball.QueueFree();
+			GameOver();
+		}
+	}
+
+	private void GameOver() {
+		GD.Print("Game over");
+		if(score > highscore) {
+			highscore = score;
+			using var file = FileAccess.Open("highscore.dat", FileAccess.ModeFlags.Write);
+			file.Store32(highscore);
 		}
 	}
 
@@ -56,8 +71,11 @@ public partial class Game : Node
 		LevelWinSfx.Play();
 	}
 
-	private void OnBrickBreak(int score) {
+	private void OnBrickBreak(uint score) {
 		this.score += score;
 		topBar.updateScore(this.score);
+		if(this.score > highscore) {
+			topBar.updateHighscore(this.score);
+		}
 	}
 }
