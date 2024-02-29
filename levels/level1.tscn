@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://lcy56wnk3ot"]
+
+[ext_resource type="PackedScene" uid="uid://cabscy8bpkbhb" path="res://brick.tscn" id="1_abpgj"]
+[ext_resource type="Script" path="res://levels/Level.cs" id="1_gaw1p"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_gaw1p")
+
+[node name="Row1" type="Node2D" parent="."]
+position = Vector2(600, 150)
+
+[node name="Brick" parent="Row1" instance=ExtResource("1_abpgj")]
+position = Vector2(-480, 0)
+MaxHealth = 2
+
+[node name="Brick2" parent="Row1" instance=ExtResource("1_abpgj")]
+position = Vector2(-320, 0)
+MaxHealth = 2
+
+[node name="Brick3" parent="Row1" instance=ExtResource("1_abpgj")]
+position = Vector2(-160, 0)
+MaxHealth = 2
+
+[node name="Brick4" parent="Row1" instance=ExtResource("1_abpgj")]
+MaxHealth = 2
+
+[node name="Brick5" parent="Row1" instance=ExtResource("1_abpgj")]
+position = Vector2(160, 0)
+MaxHealth = 2
+
+[node name="Brick6" parent="Row1" instance=ExtResource("1_abpgj")]
+position = Vector2(320, 0)
+MaxHealth = 2
+
+[node name="Brick7" parent="Row1" instance=ExtResource("1_abpgj")]
+position = Vector2(480, 0)
+MaxHealth = 2
+
+[node name="Row2" type="Node2D" parent="."]
+position = Vector2(600, 250)
+
+[node name="Brick" parent="Row2" instance=ExtResource("1_abpgj")]
+position = Vector2(-420, 0)
+
+[node name="Brick2" parent="Row2" instance=ExtResource("1_abpgj")]
+position = Vector2(-260, 0)
+
+[node name="Brick3" parent="Row2" instance=ExtResource("1_abpgj")]
+position = Vector2(-100, 0)
+
+[node name="Brick4" parent="Row2" instance=ExtResource("1_abpgj")]
+position = Vector2(60, 0)
+
+[node name="Brick5" parent="Row2" instance=ExtResource("1_abpgj")]
+position = Vector2(220, 0)
+
+[node name="Brick6" parent="Row2" instance=ExtResource("1_abpgj")]
+position = Vector2(380, 0)

@@ -24,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-color = Color(0, 1, 1, 1)
+color = Color(0.415686, 0.352941, 0.803922, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_buyxm")

@@ -33,9 +33,9 @@ public partial class TopBar : Control
 		this.level.Text = level.ToString();
 	}
 	public void updateScore(int score) {
-		this.score.Text = score.ToString();
+		this.score.Text = "Current score: " + score.ToString();
 	}
 	public void updateHighscore(int score) {
-		highscore.Text = score.ToString();
+		highscore.Text = "Highscore: " + score.ToString();
 	}
 }

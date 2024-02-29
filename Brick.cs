@@ -3,9 +3,9 @@ using Godot;
 [Tool]
 public partial class Brick : StaticBody2D
 {
-	static readonly string[] colors = {"cyan", "blue", "yellow", "red"};
+	static readonly string[] colors = {"slate blue", "light sky blue", "MediumSeaGreen", "orange", "IndianRed"};
 
-	[Export(PropertyHint.Range, "1, 4,")]
+	[Export(PropertyHint.Range, "1, 5,")]
 	public int MaxHealth
     {
         get => maxHealth;
