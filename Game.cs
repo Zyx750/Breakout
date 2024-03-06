@@ -1,5 +1,4 @@
 using System;
-using System.ComponentModel.DataAnnotations;
 using Godot;
 
 public partial class Game : Node
@@ -10,6 +9,8 @@ public partial class Game : Node
 	bool launched = false;
 	[Export]
 	uint lives = 2;
+	[Export(PropertyHint.Range, "1, 5,")]
+	uint level = 1;
 	uint score = 0;
 	uint highscore = 0;
 	AudioStreamPlayer LevelWinSfx;
@@ -22,8 +23,14 @@ public partial class Game : Node
 		topBar.updateLives(lives);
 
 		using var file = FileAccess.Open("highscore.dat", FileAccess.ModeFlags.Read);
-		highscore = file.Get32();
-		topBar.updateHighscore(highscore);
+		if(file != null) {
+			highscore = file.Get32();
+			topBar.updateHighscore(highscore);
+		}
+
+		if(level > 1) {
+			switchLevel(level, 1);
+		}
 	}
 
     public override void _Process(double delta)
@@ -69,6 +76,7 @@ public partial class Game : Node
 		topBar.updateLives(lives);
 		ResetBall();
 		LevelWinSfx.Play();
+		switchLevel(level+1, level);
 	}
 
 	private void OnBrickBreak(uint score) {
@@ -77,5 +85,19 @@ public partial class Game : Node
 		if(this.score > highscore) {
 			topBar.updateHighscore(this.score);
 		}
+	}
+
+	private void switchLevel(uint level, uint prev) {
+		if(level > 5) {
+			level = 1;
+			ball.speed *= 1.2f;
+		}
+		GetNode("Level"+prev)?.QueueFree();
+		Level l = ResourceLoader.Load<PackedScene>($"levels/level{level}.tscn").Instantiate() as Level;
+		AddChild(l);
+		l.OnBrickBreak += OnBrickBreak;
+		l.OnLevelWin += OnLevelWin;
+		this.level = level;
+		topBar.changeLevel(level);
 	}
 }

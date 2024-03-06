@@ -40,19 +40,19 @@ MaxHealth = 2
 position = Vector2(600, 300)
 
 [node name="Brick" parent="Row2" instance=ExtResource("1_abpgj")]
-position = Vector2(-420, 0)
+position = Vector2(-400, 0)
 
 [node name="Brick2" parent="Row2" instance=ExtResource("1_abpgj")]
-position = Vector2(-260, 0)
+position = Vector2(-240, 0)
 
 [node name="Brick3" parent="Row2" instance=ExtResource("1_abpgj")]
-position = Vector2(-100, 0)
+position = Vector2(-80, 0)
 
 [node name="Brick4" parent="Row2" instance=ExtResource("1_abpgj")]
-position = Vector2(60, 0)
+position = Vector2(80, 0)
 
 [node name="Brick5" parent="Row2" instance=ExtResource("1_abpgj")]
-position = Vector2(220, 0)
+position = Vector2(240, 0)
 
 [node name="Brick6" parent="Row2" instance=ExtResource("1_abpgj")]
-position = Vector2(380, 0)
+position = Vector2(400, 0)

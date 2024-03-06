@@ -6,7 +6,7 @@ public partial class Brick : StaticBody2D
 	static readonly string[] colors = {"slate blue", "light sky blue", "MediumSeaGreen", "orange", "IndianRed"};
 
 	[Export(PropertyHint.Range, "1, 5,")]
-	public int MaxHealth
+	public uint MaxHealth
     {
         get => maxHealth;
         set
@@ -15,11 +15,11 @@ public partial class Brick : StaticBody2D
             GetNode<ColorRect>("ColorRect").Color = new Color(colors[maxHealth-1]);
         }
     }
-	int maxHealth = 1;
-	int health;
+	uint maxHealth = 1;
+	uint health;
 
 	[Signal]
-	public delegate void OnBreakEventHandler(int maxHealth);
+	public delegate void OnBreakEventHandler(uint maxHealth);
 	
     public override void _Ready()
     {

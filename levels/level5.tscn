@@ -1,0 +1,150 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce808otfm0lfg"]
+
+[ext_resource type="Script" path="res://levels/Level.cs" id="1_v0440"]
+[ext_resource type="PackedScene" uid="uid://cabscy8bpkbhb" path="res://brick.tscn" id="2_b5ldh"]
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_v0440")
+
+[node name="Row1" type="Node2D" parent="."]
+position = Vector2(600, 150)
+
+[node name="Brick" parent="Row1" instance=ExtResource("2_b5ldh")]
+position = Vector2(-480, 0)
+MaxHealth = 5
+
+[node name="Brick2" parent="Row1" instance=ExtResource("2_b5ldh")]
+position = Vector2(-320, 0)
+MaxHealth = 5
+
+[node name="Brick3" parent="Row1" instance=ExtResource("2_b5ldh")]
+position = Vector2(-160, 0)
+MaxHealth = 5
+
+[node name="Brick4" parent="Row1" instance=ExtResource("2_b5ldh")]
+MaxHealth = 5
+
+[node name="Brick5" parent="Row1" instance=ExtResource("2_b5ldh")]
+position = Vector2(160, 0)
+MaxHealth = 5
+
+[node name="Brick6" parent="Row1" instance=ExtResource("2_b5ldh")]
+position = Vector2(320, 0)
+MaxHealth = 5
+
+[node name="Brick7" parent="Row1" instance=ExtResource("2_b5ldh")]
+position = Vector2(480, 0)
+MaxHealth = 5
+
+[node name="Row2" type="Node2D" parent="."]
+position = Vector2(600, 200)
+
+[node name="Brick" parent="Row2" instance=ExtResource("2_b5ldh")]
+position = Vector2(-480, 0)
+MaxHealth = 4
+
+[node name="Brick2" parent="Row2" instance=ExtResource("2_b5ldh")]
+position = Vector2(-320, 0)
+MaxHealth = 4
+
+[node name="Brick3" parent="Row2" instance=ExtResource("2_b5ldh")]
+position = Vector2(-160, 0)
+MaxHealth = 4
+
+[node name="Brick4" parent="Row2" instance=ExtResource("2_b5ldh")]
+MaxHealth = 4
+
+[node name="Brick5" parent="Row2" instance=ExtResource("2_b5ldh")]
+position = Vector2(160, 0)
+MaxHealth = 4
+
+[node name="Brick6" parent="Row2" instance=ExtResource("2_b5ldh")]
+position = Vector2(320, 0)
+MaxHealth = 4
+
+[node name="Brick7" parent="Row2" instance=ExtResource("2_b5ldh")]
+position = Vector2(480, 0)
+MaxHealth = 4
+
+[node name="Row3" type="Node2D" parent="."]
+position = Vector2(600, 250)
+
+[node name="Brick" parent="Row3" instance=ExtResource("2_b5ldh")]
+position = Vector2(-480, 0)
+MaxHealth = 3
+
+[node name="Brick2" parent="Row3" instance=ExtResource("2_b5ldh")]
+position = Vector2(-320, 0)
+MaxHealth = 3
+
+[node name="Brick3" parent="Row3" instance=ExtResource("2_b5ldh")]
+position = Vector2(-160, 0)
+MaxHealth = 3
+
+[node name="Brick4" parent="Row3" instance=ExtResource("2_b5ldh")]
+MaxHealth = 3
+
+[node name="Brick5" parent="Row3" instance=ExtResource("2_b5ldh")]
+position = Vector2(160, 0)
+MaxHealth = 3
+
+[node name="Brick6" parent="Row3" instance=ExtResource("2_b5ldh")]
+position = Vector2(320, 0)
+MaxHealth = 3
+
+[node name="Brick7" parent="Row3" instance=ExtResource("2_b5ldh")]
+position = Vector2(480, 0)
+MaxHealth = 3
+
+[node name="Row4" type="Node2D" parent="."]
+position = Vector2(600, 300)
+
+[node name="Brick" parent="Row4" instance=ExtResource("2_b5ldh")]
+position = Vector2(-480, 0)
+MaxHealth = 2
+
+[node name="Brick2" parent="Row4" instance=ExtResource("2_b5ldh")]
+position = Vector2(-320, 0)
+MaxHealth = 2
+
+[node name="Brick3" parent="Row4" instance=ExtResource("2_b5ldh")]
+position = Vector2(-160, 0)
+MaxHealth = 2
+
+[node name="Brick4" parent="Row4" instance=ExtResource("2_b5ldh")]
+MaxHealth = 2
+
+[node name="Brick5" parent="Row4" instance=ExtResource("2_b5ldh")]
+position = Vector2(160, 0)
+MaxHealth = 2
+
+[node name="Brick6" parent="Row4" instance=ExtResource("2_b5ldh")]
+position = Vector2(320, 0)
+MaxHealth = 2
+
+[node name="Brick7" parent="Row4" instance=ExtResource("2_b5ldh")]
+position = Vector2(480, 0)
+MaxHealth = 2
+
+[node name="Row5" type="Node2D" parent="."]
+position = Vector2(600, 350)
+
+[node name="Brick" parent="Row5" instance=ExtResource("2_b5ldh")]
+position = Vector2(-480, 0)
+
+[node name="Brick2" parent="Row5" instance=ExtResource("2_b5ldh")]
+position = Vector2(-320, 0)
+
+[node name="Brick3" parent="Row5" instance=ExtResource("2_b5ldh")]
+position = Vector2(-160, 0)
+
+[node name="Brick4" parent="Row5" instance=ExtResource("2_b5ldh")]
+
+[node name="Brick5" parent="Row5" instance=ExtResource("2_b5ldh")]
+position = Vector2(160, 0)
+
+[node name="Brick6" parent="Row5" instance=ExtResource("2_b5ldh")]
+position = Vector2(320, 0)
+
+[node name="Brick7" parent="Row5" instance=ExtResource("2_b5ldh")]
+position = Vector2(480, 0)

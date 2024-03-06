@@ -4,13 +4,12 @@ public partial class Level : Node2D
 {
 	int bricks;
 	[Signal]
-	public delegate void OnBrickBreakEventHandler(int score);
+	public delegate void OnBrickBreakEventHandler(uint score);
 	[Signal]
 	public delegate void OnLevelWinEventHandler();
 
 	public override void _Ready()
 	{
-		
 		foreach(Node c in GetChildren()) {
 			if(c is Brick b) {
 				bricks++;
@@ -27,7 +26,7 @@ public partial class Level : Node2D
 		}
 	}
 
-	void OnBreak(int maxHealth) {
+	void OnBreak(uint maxHealth) {
 		EmitSignal("OnBrickBreak", maxHealth);
 		bricks--;
 		if(bricks == 0) {
