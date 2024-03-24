@@ -29,7 +29,7 @@ public partial class Game : Node
 		}
 
 		if(level > 1) {
-			switchLevel(level, 1);
+			SwitchLevel(level, 1);
 		}
 	}
 
@@ -42,6 +42,22 @@ public partial class Game : Node
 				ball.velocity = new Vector2(input, -1).Normalized().Rotated((float)Math.PI * 0.05f * GD.RandRange(-1,1)) * ball.speed;
 				launched = true;
 			}
+		}
+
+		if(Input.IsActionJustPressed("pause")) {
+			PauseMenu pauseMenu = ResourceLoader.Load<PackedScene>("pause_menu.tscn").Instantiate() as PauseMenu;
+			AddChild(pauseMenu);
+			pauseMenu.Pause();
+			GetTree().Paused = true;
+			pauseMenu.OnResume += () => GetTree().Paused = false;
+			pauseMenu.OnRestart += () => {
+				if(score > highscore) {
+					highscore = score;
+					using var file = FileAccess.Open("highscore.dat", FileAccess.ModeFlags.Write);
+					file.Store32(highscore);
+				}
+				RestartGame();
+			};
 		}
     }
 
@@ -58,7 +74,6 @@ public partial class Game : Node
 	}
 
 	private void GameOver() {
-		GD.Print("Game over");
 		if(score > highscore) {
 			highscore = score;
 			using var file = FileAccess.Open("highscore.dat", FileAccess.ModeFlags.Write);
@@ -76,7 +91,7 @@ public partial class Game : Node
 		topBar.updateLives(lives);
 		ResetBall();
 		LevelWinSfx.Play();
-		switchLevel(level+1, level);
+		SwitchLevel(level+1, level);
 	}
 
 	private void OnBrickBreak(uint score) {
@@ -87,7 +102,7 @@ public partial class Game : Node
 		}
 	}
 
-	private void switchLevel(uint level, uint prev) {
+	private void SwitchLevel(uint level, uint prev) {
 		if(level > 5) {
 			level = 1;
 			ball.speed *= 1.2f;
@@ -99,5 +114,16 @@ public partial class Game : Node
 		l.OnLevelWin += OnLevelWin;
 		this.level = level;
 		topBar.changeLevel(level);
+	}
+
+	private void RestartGame() {
+		GD.Print("test");
+		score = 0;
+		topBar.updateScore(score);
+		SwitchLevel(1, level);
+		ResetBall();
+		lives = 2;
+		topBar.updateLives(lives);
+		GetTree().Paused = false;
 	}
 }

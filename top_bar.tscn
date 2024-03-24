@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://bee4rrslqoo5h"]
 
-[ext_resource type="Theme" uid="uid://c78778cg6ra80" path="res://top_bar.tres" id="1_82sd8"]
+[ext_resource type="Theme" uid="uid://c78778cg6ra80" path="res://theme.tres" id="1_82sd8"]
 [ext_resource type="Script" path="res://TopBar.cs" id="1_byhpv"]
 [ext_resource type="Texture2D" uid="uid://btbji560drvvy" path="res://heart.png" id="2_jjeqj"]
 [ext_resource type="PackedScene" uid="uid://brr1vk3bht3gs" path="res://heart.tscn" id="3_wpw2i"]
+
 
 [node name="TopBar" type="Control"]
 layout_mode = 3
