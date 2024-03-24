@@ -48,7 +48,7 @@ public partial class Ball : CharacterBody2D
         if (colInfo != null) {
             if(colInfo.GetCollider() is Paddle p) {
                 if(colInfo.GetNormal() == Vector2.Up) {
-                    Vector2 dir = new Vector2(Position.X - p.Position.X, -100).Normalized();
+                    Vector2 dir = new Vector2(Position.X - p.Position.X, -100).Normalized().Rotated((float)System.Math.PI * 0.03f * GD.RandRange(-1,1));
                     velocity = dir * speed;
                 }
                 else {

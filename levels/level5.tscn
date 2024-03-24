@@ -7,7 +7,7 @@
 script = ExtResource("1_v0440")
 
 [node name="Row1" type="Node2D" parent="."]
-position = Vector2(600, 150)
+position = Vector2(600, 175)
 
 [node name="Brick" parent="Row1" instance=ExtResource("2_b5ldh")]
 position = Vector2(-480, 0)
@@ -37,7 +37,7 @@ position = Vector2(480, 0)
 MaxHealth = 5
 
 [node name="Row2" type="Node2D" parent="."]
-position = Vector2(600, 200)
+position = Vector2(600, 225)
 
 [node name="Brick" parent="Row2" instance=ExtResource("2_b5ldh")]
 position = Vector2(-480, 0)
@@ -67,7 +67,7 @@ position = Vector2(480, 0)
 MaxHealth = 4
 
 [node name="Row3" type="Node2D" parent="."]
-position = Vector2(600, 250)
+position = Vector2(600, 275)
 
 [node name="Brick" parent="Row3" instance=ExtResource("2_b5ldh")]
 position = Vector2(-480, 0)
@@ -97,7 +97,7 @@ position = Vector2(480, 0)
 MaxHealth = 3
 
 [node name="Row4" type="Node2D" parent="."]
-position = Vector2(600, 300)
+position = Vector2(600, 325)
 
 [node name="Brick" parent="Row4" instance=ExtResource("2_b5ldh")]
 position = Vector2(-480, 0)
@@ -127,7 +127,7 @@ position = Vector2(480, 0)
 MaxHealth = 2
 
 [node name="Row5" type="Node2D" parent="."]
-position = Vector2(600, 350)
+position = Vector2(600, 375)
 
 [node name="Brick" parent="Row5" instance=ExtResource("2_b5ldh")]
 position = Vector2(-480, 0)
