@@ -7,7 +7,7 @@ public partial class PauseMenu : Control
 	public delegate void OnRestartEventHandler();
 	[Signal]
 	public delegate void OnResumeEventHandler();
-	public void Pause(bool GameOver = false, int score = -1) {
+	public void Pause(bool GameOver = false, uint score = 0) {
 		if(GameOver) {
 			GetNode<Label>("Resume").Text = "Final score: " + score;
 			GetNode<Label>("GameStatus").Text = "Game Over";
@@ -22,7 +22,7 @@ public partial class PauseMenu : Control
 
     public override void _Process(double delta)
     {
-        if(Input.IsActionJustPressed("pause")) {
+        if(Input.IsActionJustPressed("pause") && canResume) {
 			EmitSignal("OnResume");
 			QueueFree();
 			return;

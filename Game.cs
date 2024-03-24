@@ -6,6 +6,7 @@ public partial class Game : Node
 	Ball ball;
 	Paddle paddle;
 	TopBar topBar;
+	Level l;
 	bool launched = false;
 	[Export]
 	uint lives = 2;
@@ -28,9 +29,7 @@ public partial class Game : Node
 			topBar.updateHighscore(highscore);
 		}
 
-		if(level > 1) {
-			SwitchLevel(level, 1);
-		}
+		LoadLevel(level);
 	}
 
     public override void _Process(double delta)
@@ -67,10 +66,7 @@ public partial class Game : Node
 			topBar.updateLives(lives);
 			ResetBall();
 		}
-		else {
-			ball.QueueFree();
-			GameOver();
-		}
+		else GameOver();
 	}
 
 	private void GameOver() {
@@ -79,6 +75,12 @@ public partial class Game : Node
 			using var file = FileAccess.Open("highscore.dat", FileAccess.ModeFlags.Write);
 			file.Store32(highscore);
 		}
+		PauseMenu pauseMenu = ResourceLoader.Load<PackedScene>("pause_menu.tscn").Instantiate() as PauseMenu;
+		AddChild(pauseMenu);
+		pauseMenu.Pause(true, score);
+		GetTree().Paused = true;
+		pauseMenu.OnResume += () => GetTree().Paused = false;
+		pauseMenu.OnRestart += RestartGame;
 	}
 
 	private void ResetBall() {
@@ -91,7 +93,7 @@ public partial class Game : Node
 		topBar.updateLives(lives);
 		ResetBall();
 		LevelWinSfx.Play();
-		SwitchLevel(level+1, level);
+		LoadLevel(level+1);
 	}
 
 	private void OnBrickBreak(uint score) {
@@ -102,13 +104,13 @@ public partial class Game : Node
 		}
 	}
 
-	private void SwitchLevel(uint level, uint prev) {
+	private void LoadLevel(uint level) {
 		if(level > 5) {
 			level = 1;
-			ball.speed *= 1.2f;
+			ball.speed *= 1.25f;
 		}
-		GetNode("Level"+prev)?.QueueFree();
-		Level l = ResourceLoader.Load<PackedScene>($"levels/level{level}.tscn").Instantiate() as Level;
+		l?.QueueFree();
+		l = ResourceLoader.Load<PackedScene>($"levels/level{level}.tscn").Instantiate() as Level;
 		AddChild(l);
 		l.OnBrickBreak += OnBrickBreak;
 		l.OnLevelWin += OnLevelWin;
@@ -117,13 +119,13 @@ public partial class Game : Node
 	}
 
 	private void RestartGame() {
-		GD.Print("test");
 		score = 0;
 		topBar.updateScore(score);
-		SwitchLevel(1, level);
+		LoadLevel(1);
 		ResetBall();
 		lives = 2;
 		topBar.updateLives(lives);
+		paddle.Position = new Vector2(600, 850);
 		GetTree().Paused = false;
 	}
 }

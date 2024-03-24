@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyjyabry6dj06"]
+[gd_scene load_steps=6 format=3 uid="uid://dyjyabry6dj06"]
 
 [ext_resource type="PackedScene" uid="uid://bee4rrslqoo5h" path="res://top_bar.tscn" id="1_evlja"]
 [ext_resource type="Script" path="res://Game.cs" id="1_wuhxr"]
 [ext_resource type="PackedScene" uid="uid://cfin25o5boeqw" path="res://paddle.tscn" id="2_nupup"]
 [ext_resource type="PackedScene" uid="uid://dlsnnfs8r4iyr" path="res://ball.tscn" id="3_jikax"]
-[ext_resource type="PackedScene" uid="uid://lcy56wnk3ot" path="res://levels/level1.tscn" id="5_qbhtj"]
 [ext_resource type="AudioStream" uid="uid://ccpahmep675g1" path="res://win.wav" id="6_jw1ny"]
 
 [node name="Game" type="Node"]
@@ -22,16 +21,12 @@ color = Color(0, 0, 0, 1)
 size_flags_vertical = 0
 
 [node name="Paddle" parent="." instance=ExtResource("2_nupup")]
-position = Vector2(600, 851)
+position = Vector2(600, 850)
 
 [node name="Ball" parent="." instance=ExtResource("3_jikax")]
 position = Vector2(598, 809)
-
-[node name="Level1" parent="." instance=ExtResource("5_qbhtj")]
 
 [node name="LevelWin" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_jw1ny")
 
 [connection signal="Offscreen" from="Ball" to="." method="OnBallLost"]
-[connection signal="OnBrickBreak" from="Level1" to="." method="OnBrickBreak"]
-[connection signal="OnLevelWin" from="Level1" to="." method="OnLevelWin"]
